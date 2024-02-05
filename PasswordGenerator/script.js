@@ -30,6 +30,7 @@ function generator(){
 const NumBtn=document.querySelector('#numbers');
 const CharBtn=document.querySelector('#characters');
 const charInput=document.querySelector('input[type="text"][readonly]');
+const copyBtn=document.querySelector('#copy');
 
 const range=document.getElementById('range');
 const rangeHolder=document.querySelector('span');
@@ -73,6 +74,15 @@ CharBtn.addEventListener('click',(e)=>{
         generator();
     }
 
+})
+copyBtn.addEventListener('click',()=>{
+    navigator.clipboard.writeText(charInput.value)
+    .then(()=>{
+        alert(`Password is ${charInput.value}`);
+    })
+    .catch(err=>{
+        console.error(`Failed to copy text ${err}`);
+    })
 })
 generator();
 
